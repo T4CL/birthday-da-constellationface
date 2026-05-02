@@ -1,0 +1,72 @@
+@import url('https://googleapis.com');
+
+body { margin: 0; padding: 0; overflow: hidden; background: #ffdae9; font-family: 'Press Start 2P', cursive; }
+
+#start-screen, #end-screen {
+    position: fixed; width: 100%; height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    z-index: 100; background: #ffdae9;
+}
+
+#end-screen { display: none; background: transparent; z-index: 1000; }
+
+.title { color: #ff69b4; font-size: 20px; text-align: center; }
+.character-thumb { width: 100px; margin: 10px; }
+.hint { font-size: 9px; text-align: center; color: #555; }
+
+button {
+    background: #ff69b4; color: white; border: 4px solid #fff;
+    padding: 15px 25px; font-family: 'Press Start 2P', cursive;
+    cursor: pointer; margin-top: 20px;
+}
+
+#game-container { display: none; position: relative; width: 100vw; height: 300px; margin-top: 50vh; transform: translateY(-50%); }
+
+#player-sprite, #elly-sprite { position: absolute; z-index: 10; pointer-events: none; width: 65px; image-rendering: pixelated; }
+#elly-sprite { display: none; }
+
+/* O círculo preto (Íris) */
+#iris-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: black;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001; /* Fica na frente do jogo */
+    transition: width 1.5s ease-in-out, height 1.5s ease-in-out;
+    pointer-events: none;
+}
+
+/* Quando ele cresce */
+.iris-active {
+    width: 350vmax !important;
+    height: 350vmax !important;
+}
+
+/* O conteúdo do bolo e texto */
+.final-content {
+    display: none;
+    opacity: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed; /* Garante que ignore o resto e foque na tela toda */
+    top: 0; left: 0; width: 100%; height: 100vh;
+    z-index: 1010; /* MAIS ALTO QUE O CÍRCULO PRETO */
+    transition: opacity 2s ease-in;
+}
+
+/* A classe que faz o fade-in do bolo */
+.show-content {
+    opacity: 1 !important;
+}
+
+#bolo-pixel {
+    width: 150px;
+    height: auto;
+    image-rendering: pixelated;
+    margin-bottom: 20px;
+}
