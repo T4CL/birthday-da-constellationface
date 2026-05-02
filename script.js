@@ -20,8 +20,8 @@ let groundY = 190;
 
 let character = { x: 50, y: groundY, width: 60, height: 60, vy: 0, jumping: false };
 
-const dogImg = new Image(); dogImg.src = "assets/pibble.png";
-const bgImg = new Image(); bgImg.src = "assets/backgroundd.jpeg";
+const dogImg = new Image(); dogImg.src = "/assets/pibble.png";
+const bgImg = new Image(); bgImg.src = "/assets/backgroundd.jpeg";
 
 // BOTÃO JOGAR
 document.getElementById("start-btn").addEventListener("click", () => {
@@ -37,7 +37,7 @@ document.getElementById("start-btn").addEventListener("click", () => {
     // Visual
     startScreen.style.display = "none";
     gameContainer.style.display = "block";
-    playerSprite.src = "assets/pngcorrendo.gif";
+    playerSprite.src = "/assets/pngcorrendo.gif";
     
     // Estado do Jogo (Reset para garantir velocidade normal)
     gameRunning = true;
@@ -87,7 +87,7 @@ function update() {
         ctx.drawImage(dogImg, dog.x, dog.y, dog.width, dog.height);
         if (character.x < dog.x + 30 && character.x + 30 > dog.x && character.y < dog.y + 30 && character.y + 30 > dog.y) {
             gameRunning = false;
-            playerSprite.src = "assets/gameover.png";
+            playerSprite.src = "/assets/gameover.png";
             setTimeout(() => { alert("Você se distraiu com um pibble! 🐶😭"); location.reload(); }, 100);
             return;
         }
@@ -116,13 +116,13 @@ function startVictoryScene() {
             playerSprite.style.top = groundY + "px";
         } else {
             clearInterval(walk);
-            playerSprite.src = "assets/parada.png";
+            playerSprite.src = "/assets/parada.png";
             playerSprite.style.width = "40px";
             playerSprite.style.height = "75px";
             playerSprite.style.top = (groundY - 10) + "px";
 
             setTimeout(() => {
-                ellySprite.src = "assets/kiss.png";
+                ellySprite.src = "/assets/kiss.png";
                 ellySprite.style.width = "85px";
                 ellySprite.style.top = (groundY - 34) + "px";
                 ellySprite.style.left = (character.x + 15) + "px";
